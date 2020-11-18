@@ -266,6 +266,7 @@ map_neon_data_to_ecocomDP.BEETLE <- function(
 
   #Get raw counts table
   beetles_counts <- data_expert %>%
+    select(-family) %>%
     dplyr::select(-c(subsampleID, sampleType, identificationSource, individualID)) %>%
     dplyr::group_by_at(dplyr::vars(-individualCount)) %>%
     dplyr::summarise(count = sum(individualCount)) %>%
